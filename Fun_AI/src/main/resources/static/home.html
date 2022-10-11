@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title>Fun with AI</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<style>
+			.mybox{
+				background-color:lightblue;
+				float:right;
+				margin-top:-30px;
+				
+			}
+			.myinput{
+				width:97% !important;
+			}
+		</style>
+	</head>
+	<body>
+	<div class="container">
+		<h3>Enter keyword string</h3>
+		<form method="GET" action="/home">
+			
+			
+			<div class="form-group">
+				<label>Keywords</label>
+				<input type="text" name="Keywords[]" id="keyword_0" class="myinput form-control">
+				<input type="button" class="mybox" value="+" onclick="addBox()">
+			</div>
+			<div id="key"></div>
+			
+
+			<input value ="submit" name="submit" type="submit" />  
+		</form>
+		<script>
+			var counter = 1;
+			var textBox = "";
+			var key = document.getElementById("key")
+			function addBox()
+			{
+				var div = document.createElement("div");
+				div.setAttribute("class","form-group");
+				div.setAttribute("id","box_"+counter);
+				
+				var textBox = "<input type='text' name='keywords[]' class='myinput form-control myinput' id='keywords_"+counter+"'><input class='mybox' type='button' value='-' onclick='removeBox(this)'>";
+				
+				div.innerHTML = textBox;
+				
+				key.appendChild(div);
+				
+				counter++;
+			}
+			
+			function removeBox(ele)
+			{
+				ele.parentNode.remove();
+			}
+		</script>
+		</div>
+		<div style="text-align:center">  
+</div> 
+	</body>
+</html>
